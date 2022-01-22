@@ -1,20 +1,22 @@
 <template>
-  <div @click="$emit('close')"></div>
-  <dialog open>
-    <header>
-      <slot
-        ><h2>{{ title }}</h2>
-      </slot>
-    </header>
-    <section>
-      <slot name="content"></slot>
-    </section>
-    <menu>
-      <slot name="actions">
-        <base-button @click="$emit('close')"></base-button>
-      </slot>
-    </menu>
-  </dialog>
+  <teleport to="body">
+    <div @click="$emit('close')"></div>
+    <dialog open>
+      <header>
+        <slot
+          ><h2>{{ title }}</h2>
+        </slot>
+      </header>
+      <section>
+        <slot name="content"></slot>
+      </section>
+      <menu>
+        <slot name="actions">
+          <base-button @click="$emit('close')"></base-button>
+        </slot>
+      </menu>
+    </dialog>
+  </teleport>
 </template>
 
 <script>
