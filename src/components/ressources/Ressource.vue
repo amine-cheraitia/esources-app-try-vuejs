@@ -3,7 +3,9 @@
     <base-card>
       <header>
         <h3>{{ title }}</h3>
-        <base-button mode="flat">Delete</base-button>
+        <base-button mode="flat" @click="deleteRessource(id)"
+          >Delete</base-button
+        >
       </header>
 
       <p>{{ description }}</p>
@@ -17,6 +19,13 @@
 export default {
   name: 'ressource',
   props: ['link', 'id', 'title', 'description'],
+  inject: ['deleteRessource'],
+
+  provide() {
+    return {
+      deleteRessource: this.deleteRessource,
+    };
+  },
   /* components: { BaseCard }, */
 };
 </script>
