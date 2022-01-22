@@ -8,7 +8,7 @@
         </div>
         <div class="form-control">
           <label for="description">Description</label>
-          <textarea name="description" id="description" v-model="description" />
+          <textarea name="description" id="description" v-model="descritopn" />
         </div>
         <div class="form-control">
           <label for="link">Link</label>
@@ -21,7 +21,11 @@
         </div>
       </form>
     </base-card>
-    <base-dialog v-if="showError" :title="titleError">
+    <base-dialog
+      v-if="showError"
+      :title="titleError"
+      @close="showError = false"
+    >
       <template #content>
         <p>At least one input is invalid</p>
         <p>please check all the inputs</p>
@@ -55,8 +59,7 @@ export default {
         this.link.trim() === ''
       ) {
         this.titleError = 'Invalid input';
-        this.showError = true;
-        return alert('veuillez rajouté');
+        return (this.showError = true);
       }
       this.addNewRessource(this.title, this.descritopn, this.link);
     },
